@@ -1,51 +1,59 @@
 const express = require('express'); // 1
 const router = express.Router();  // 2
-const { tasks } = require('../models/data');
-// const { render } = require('ejs');
-
-const mytile = "Express Server App";
-router.get('/profile', (req, res) => { // get route for index page using ejs template engine  //3
-    res.render('index.ejs', {tile: mytile});
-});
+const {tasks} = require('../models/data');
 
 
-
-
-router.get('/', (req, res) => { 
-    // get route to get all tasks
+router.get('/', (req, res) => {  // get route to get all tasks
     res.status(200).json(tasks);
 })
 
+ 
+router.get('/:id', async(req, res) => {   // get route to get individual task
+    try {
+        const task = await tasks[req.params.id];
+        res.status(200).json(task);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
-router.get('/:id', (req, res) => {  // get route for individual tasks
-    res.status(200).json(tasks[req.params.id]);  
-}); 
-
-
-router.post('/', (req, res) => {  // post route for tasks
-    res.status(200).json(tasks);
-}); 
-
-
-router.put('/:id', (req, res) => {  // put route for tasks
-    res.status(200).json(tasks[req.params.id]);
-});
-
-
-router.delete('/:id', (req, res) => {  // delete route for tasks
-    res.status(200).json(tasks[req.params.id]);
-});
-
-
-router.patch('/:id', (req, res) => {  // patch route for tasks
-    res.status(200).json(tasks[req.params.id]);
-});
+ 
+router.post('/', async(req, res) => {   // post route to add new tasks
+    try {
+        const task = req.body;
+        tasks.push(task);
+        res.status(200).json(task);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 
+router.put('/:id', async(req, res) => { // put route to update tasks
+    try {
+        const task = await tasks[req.params.id];
+        task.reminder = !task.reminder;
+        res.status(200).json(task);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+
+router.delete('/:id', async(req, res) => {  // delete route to delete tasks
+    try {
+        const task = await tasks[req.params.id];
+        task.reminder = !task.reminder;
+        res.status(200).json(task);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 
 
 
 
 
-module.exports = router;  // 4
+
+module.exports = router;  

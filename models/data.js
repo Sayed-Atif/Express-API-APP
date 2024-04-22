@@ -27,47 +27,57 @@
 
 
 
-//  const fruits = [      // array of objects for fruits 
-//     {
-//         name:'apple',
-//         color: 'red',
-//         readyToEat: true
-//     },
-//     {
-//         name:'pear',
-//         color: 'green',
-//         readyToEat: false
-//     },
-//     {
-//         name:'banana',
-//         color: 'yellow',
-//         readyToEat: true
-//     }
-// ];
+ const fruits = [      // array of objects for fruits 
+    {
+        name:'apple',
+        color: 'red',
+        readyToEat: true
+    },
+    {
+        name:'pear',
+        color: 'green',
+        readyToEat: false
+    },
+    {
+        name:'banana',
+        color: 'yellow',
+        readyToEat: true
+    },
+    {
+        name:'orange',
+        color: 'orange',
+        readyToEat: false
+    }
+];
 
 
 
-// const vegitables = [   // array of objects for vegitables
-//     {
-//         name:'carrot',
-//         color: 'orange',
-//         readyToEat: true
-//     },
-//     {
-//         name:'broccoli',
-//         color: 'green',
-//         readyToEat: false
-//     },
-//     {
-//         name:'celery',
-//         color: 'purple',
-//         readyToEat: true
-//     }
-// ]
+const vegitables = [   // array of objects for vegitables
+    {
+        name:'carrot',
+        color: 'orange',
+        readyToEat: true
+    },
+    {
+        name:'broccoli',
+        color: 'green',
+        readyToEat: false
+    },
+    {
+        name:'celery',
+        color: 'purple',
+        readyToEat: true
+    },
+    {
+        name:'peas',
+        color: 'green',
+        readyToEat: false
+    }
+]
 
 
 
 
 
-module.exports = { tasks };
+module.exports = { tasks, fruits, vegitables };
 
